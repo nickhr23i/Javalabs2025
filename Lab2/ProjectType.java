@@ -8,6 +8,13 @@
  * @author Nico
  */
 public enum ProjectType {
+
+    /**
+     *
+     */
     PRACTICAL,
+    /**
+     *
+     */
     THEORETICAL;
 }

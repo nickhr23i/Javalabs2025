@@ -9,19 +9,48 @@
  */
 import java.time.LocalDate;
 
-public class Student {
+/**
+ *
+ * @author Nico
+ */
+public class Student extends Person {
 
-    private String name;
-    private LocalDate birthDate;
     private long regNumber;
+    private Project assignedProject;
+    private Project[] preferences;
 
-    public Student() {
+    /**
+     *
+     * @param name
+     */
+    public Student(String name) {
+        this.name = name;
     }
 
+    /**
+     *
+     * @param name
+     * @param bDate
+     * @param regNumber
+     */
     public Student(String name, LocalDate bDate, long regNumber) {
         this.name = name;
         this.birthDate = bDate;
         this.regNumber = regNumber;
+    }
+
+    /**
+     *
+     * @param name
+     * @param bDate
+     * @param regNumber
+     * @param preferences
+     */
+    public Student(String name, LocalDate bDate, long regNumber, Project... preferences) {
+        this.name = name;
+        this.birthDate = bDate;
+        this.regNumber = regNumber;
+        this.preferences = preferences;
     }
 
     /**
@@ -39,40 +68,62 @@ public class Student {
     }
 
     /**
-     * @return the name
+     *
+     * @return
      */
-    public String getName() {
-        return name;
-    }
-
-    /**
-     * @param name the name to set
-     */
-    public void setName(String name) {
-        this.name = name;
-    }
-
     @Override
     public String toString() {
         String s = "";
-        s = s + "Student name:" + name + "\n";
+        s = s + "Student name: " + name + "\n";
         s = s + "Birth date: " + birthDate + "\n";
         s = s + "Registration Number: " + regNumber + "\n";
         return s;// Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
     }
 
     /**
-     * @return the birthDate
+     * @return the assignedProject
      */
-    public LocalDate getBirthDate() {
-        return birthDate;
+    public Project getAssignedProject() {
+        return assignedProject;
     }
 
     /**
-     * @param birthDate the birthDate to set
+     * @param assignedProject the assignedProject to set
      */
-    public void setBirthDate(LocalDate birthDate) {
-        this.birthDate = birthDate;
+    public void setAssignedProject(Project assignedProject) {
+        this.assignedProject = assignedProject;
+        this.assignedProject.setAssignedStudent(this);
+    }
+
+    /**
+     * @return the preferences
+     */
+    public Project[] getPreferences() {
+        return preferences;
+    }
+
+    /**
+     * @param preferences the preferences to set
+     */
+    public void setPreferences(Project... preferences) {
+        this.preferences = preferences;
+        for (Project p : preferences) {
+            p.incFrequency();
+        }
+    }
+
+    /**
+     *
+     * @param obj
+     * @return
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null || !(obj instanceof Student)) {
+            return false;// Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+        }
+        Student other = (Student) obj;
+        return name.equals(other.name);
     }
 
 }
