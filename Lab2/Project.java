@@ -17,8 +17,9 @@ public class Project {
 
     /**
      *
-     */
-    public Project() {
+     * @param name */
+    public Project(String name) {
+        this.name = name;
     }
 
     /**

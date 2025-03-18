@@ -1,8 +1,11 @@
+
+import java.util.HashSet;
+import java.util.Set;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-
 /**
  *
  * @author Nico
@@ -10,6 +13,7 @@
 public class Solution {
 
     private Problem problem;
+    private Set<String> studentSet, prefSet;
 
     /**
      *
@@ -89,5 +93,46 @@ public class Solution {
                 System.out.print(student.getName() + " : " + student.getAssignedProject().getName() + "\n");
             }
         }
+    }
+
+    private boolean neighbourCheck(Student[] students, int step,int j, int size) {
+        Project[] pref;
+        Set<String> prefSub = new HashSet<>();
+        for (int i = j; i <= students.length - size + step; i++) {
+            studentSet.add(students[i].getName());
+            pref = students[i].getPreferences();
+            for (Project p : pref) {
+                prefSub.add(p.getName());
+            }
+            prefSub.removeAll(prefSet);
+            prefSet.addAll(prefSub);
+            if (studentSet.size() == size) {
+                if (size > prefSet.size()) {
+                    return false;
+                }
+            } else {
+                if (neighbourCheck(students, step + 1,i+1, size) == false) {
+                    return false;
+                }
+            }
+            studentSet.remove(students[i].getName());
+            prefSet.removeAll(prefSub);
+
+            prefSub.clear();
+        }
+
+        return true;
+    }
+
+    public boolean solvable() {
+        Student[] students = problem.getStudents();
+        studentSet = new HashSet<>();
+        prefSet = new HashSet<>();
+        for (int i = 1; i <= students.length; i++) {
+            if (neighbourCheck(students, 0,0, i) == false) {
+                return false;
+            }
+        }
+        return true;
     }
 }
