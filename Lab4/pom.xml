@@ -10,4 +10,17 @@
         <maven.compiler.release>23</maven.compiler.release>
         <exec.mainClass>com.mycompany.lab4.Lab4</exec.mainClass>
     </properties>
+    <dependencies>
+        <dependency>
+            <groupId>com.github.javafaker</groupId>
+            <artifactId>javafaker</artifactId>
+            <version>0.8</version>
+            <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>org.graph4j</groupId>
+            <artifactId>graph4j</artifactId>
+            <version>1.0.8</version>                          
+        </dependency>
+    </dependencies>
 </project>
