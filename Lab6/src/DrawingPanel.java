@@ -20,5 +20,6 @@ public class DrawingPanel extends JPanel {
         g.drawOval(70,50,dotSize,dotSize);
         g.drawOval(120,120,dotSize,dotSize);
         g.drawOval(250,270,dotSize,dotSize);
+        g.drawOval(300,270,dotSize,dotSize);
     }
 }
