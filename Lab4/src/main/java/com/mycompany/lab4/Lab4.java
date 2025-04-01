@@ -5,7 +5,7 @@ package com.mycompany.lab4;
 
 import com.github.javafaker.Faker;
 import java.util.*;
-import java.util.stream.Collectors;
+import java.util.stream.*;
 import org.graph4j.Graph;
 import org.graph4j.GraphBuilder;
 
@@ -14,6 +14,12 @@ import org.graph4j.GraphBuilder;
  * @author Nico
  */
 public class Lab4 {
+
+    public class Data {
+
+        public int nrFriendly, nrEnemy, nrNeutral;
+        public double safetyPercentage;
+    }
 
     public static void main(String[] args) {
         Location[] locations = new Location[5];
@@ -127,5 +133,123 @@ public class Lab4 {
                 }
             }
         }
+
+        g.setEdgeWeight(0, 1, 0.87);
+        g.setEdgeWeight(0, 2, 0.27);
+        g.setEdgeWeight(1, 4, 0.17);
+        g.setEdgeWeight(2, 4, 0.05);
+        g.setEdgeWeight(4, 3, 0.63);
+        g.setEdgeWeight(1, 2, 0.49);
+
+        Lab4 lab4 = new Lab4();
+        lab4.safestRoute(g, locations.length);
+
+        Graph gRand = GraphBuilder.empty().buildGraph();
+        LocationType[] type = new LocationType[3];
+        type[0] = LocationType.FRIENDLY;
+        type[1] = LocationType.NEUTRAL;
+        type[2] = LocationType.ENEMY;
+        Location[] locs = new Location[200];
+        for (int i = 0; i < locs.length; i++) {
+            locs[i] = new Location(faker.address().streetAddress(), type[(int) (Math.random() * 10000) % 3]);
+        }
+        for (int i = 0; i < locs.length; i++) {
+            gRand.addLabeledVertex(i, locs[i]);
+        }
+        for (int i = 0; i < locs.length; i++) {
+            for (int j = 0; j < locs.length; j++) {
+                if (i != j) {
+                    if ((int) (Math.random() * 10000) % 100 > 50) {
+                        gRand.addEdge(i, j);
+                        gRand.setEdgeWeight(i, j, Math.random());
+                    }
+                }
+            }
+        }
+        lab4.safestRoute(gRand, locs.length);
     }
+
+    void safestRoute(Graph g, int size) {
+
+        Data[][] data = new Data[size][size];
+        Location loc;
+        LocationType type;
+
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                data[i][j] = new Data();
+                data[i][j].nrFriendly = data[i][j].nrEnemy = data[i][j].nrNeutral = 0;
+                data[i][j].safetyPercentage = 0;
+                loc = (Location) g.getVertexLabel(i);
+                type = loc.getlType();
+                if (null == type) {
+                    return;
+                } else {
+                    switch (type) {
+                        case FRIENDLY ->
+                            data[i][j].nrFriendly++;
+                        case NEUTRAL ->
+                            data[i][j].nrNeutral++;
+                        default ->
+                            data[i][j].nrEnemy++;
+                    }
+                }
+                if (i == j) {
+                    data[i][j].safetyPercentage = 1;
+                } else {
+                    if (g.getEdgeWeight(i, j) < 1) {
+                        data[i][j].safetyPercentage = g.getEdgeWeight(i, j);
+                    }
+                    loc = (Location) g.getVertexLabel(j);
+                    type = loc.getlType();
+                    if (null == type) {
+                        return;
+                    } else {
+                        switch (type) {
+                            case FRIENDLY ->
+                                data[i][j].nrFriendly++;
+                            case NEUTRAL ->
+                                data[i][j].nrNeutral++;
+                            default ->
+                                data[i][j].nrEnemy++;
+                        }
+                    }
+                }
+            }
+        }
+
+        for (int k = 0; k < size; k++) {
+            for (int i = 0; i < size; i++) {
+                for (int j = 0; j < size; j++) {
+                    if (data[i][j].safetyPercentage < data[i][k].safetyPercentage * data[k][j].safetyPercentage) {
+                        data[i][j].safetyPercentage = data[i][k].safetyPercentage * data[k][j].safetyPercentage;
+                        data[i][j].nrFriendly = data[i][k].nrFriendly + data[k][j].nrFriendly - data[k][k].nrFriendly;
+                        data[i][j].nrNeutral = data[i][k].nrNeutral + data[k][j].nrNeutral - data[k][k].nrNeutral;
+                        data[i][j].nrEnemy = data[i][k].nrEnemy + data[k][j].nrEnemy - data[k][k].nrEnemy;
+                    }
+                }
+            }
+        }
+
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                System.out.println("Prob of getting from " + i + " to " + j + " on the safest path: " + data[i][j].safetyPercentage);
+                System.out.println("Nr of friendly locations the path passes through " + data[i][j].nrFriendly);
+                System.out.println("Nr of neutral locations the path passes through " + data[i][j].nrNeutral);
+                System.out.println("Nr of enemy locations the path passes through " + data[i][j].nrEnemy);
+            }
+        }
+        double maxSafety, minSafety, avgSafety;
+        List<Data> locationData;
+        for (int i = 0; i < size; i++) {
+            locationData = Arrays.stream(data[i]).filter(d -> (d.safetyPercentage > 0 && d.safetyPercentage < 1)).collect(Collectors.toCollection(ArrayList::new));
+            maxSafety = locationData.stream().mapToDouble(d -> d.safetyPercentage).max().getAsDouble();
+            minSafety = locationData.stream().mapToDouble(d -> d.safetyPercentage).min().getAsDouble();
+            avgSafety = locationData.stream().mapToDouble(d -> d.safetyPercentage).average().getAsDouble();
+            System.out.println("Maximum safety of a path leaving from " + i + " to another location " + maxSafety);
+            System.out.println("Minimum safety of a path leaving from " + i + " to another location " + minSafety);
+            System.out.println("Average safety of a path leaving from " + i + " to another location " + avgSafety);
+        }
+    }
+
 }
