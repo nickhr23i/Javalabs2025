@@ -5,6 +5,8 @@ import java.awt.event.MouseEvent;
 import java.util.*;
 import java.util.List;
 
+import static java.lang.Math.sqrt;
+
 public class DrawingPanel extends JPanel {
     private final MainFrame frame;
     private int canvasWidth = 400, canvasHeight = 400;
@@ -40,8 +42,20 @@ public class DrawingPanel extends JPanel {
                         if (selectedDot == null||selectedDot.equals(d)) {
                             selectedDot = d;
                         } else {
+                            int score;
                             Line l = new Line(selectedDot, d);
                             lines.add(l);
+                            if(lines.size()%2==1) {
+                                score=frame.configPanel.getScore1();
+                                score+=(int)sqrt((selectedDot.getX()-d.getX())*(selectedDot.getX()-d.getX())+(selectedDot.getY()-d.getY())*(selectedDot.getY()-d.getY()));
+                                frame.configPanel.setScore1(score);
+                            }
+                            else{
+                                score=frame.configPanel.getScore2();
+                                score+=(int)sqrt((selectedDot.getX()-d.getX())*(selectedDot.getX()-d.getX())+(selectedDot.getY()-d.getY())*(selectedDot.getY()-d.getY()));
+                                frame.configPanel.setScore2(score);
+                            }
+
                             selectedDot = null;
                         }
                         break;
