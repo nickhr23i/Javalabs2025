@@ -18,10 +18,9 @@ public class MainFrame extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         //create the components
-        canvas = new DrawingPanel(this);
         configPanel = new ConfigPanel(this);
         controlPanel = new ControlPanel(this);
-
+        canvas = new DrawingPanel(this);
 
         add(canvas, CENTER); //this is BorderLayout.CENTER
         add(configPanel, BorderLayout.NORTH);
