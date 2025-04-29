@@ -4,10 +4,12 @@ public class Bag {
     private final List<Tile> tiles=new ArrayList<>();
     public Bag() {
         Tile t;
+        int points;
         for(char c='a'; c<='z'; c++) {
+            points=(int)(Math.random()*1000)%10+1;
             for(int i=0;i<10;i++) {
-                t=new Tile(c,(int)(Math.random()*1000)%10+1);
-                tiles.add(t);
+                t=new Tile(c,points);
+                getTiles().add(t);
             }
         }
     }
@@ -15,15 +17,22 @@ public class Bag {
         List<Tile> extracted = new ArrayList<>();
         int extractedindex;
         for (int i = 0; i < howMany; i++) {
-            if (tiles.isEmpty()) {
+            if (getTiles().isEmpty()) {
                 break;
             }
-            extractedindex=(int)(Math.random()*1000)%tiles.size();
-            extracted.add(tiles.get(extractedindex));
-            tiles.remove(extractedindex);
+            extractedindex=(int)(Math.random()*1000)% getTiles().size();
+            extracted.add(getTiles().get(extractedindex));
+            getTiles().remove(extractedindex);
         }
         return extracted;
     }
 
+    public synchronized void discardTiles(List<Tile> discarded) {
+        getTiles().addAll(discarded);
+    }
 
+
+    public List<Tile> getTiles() {
+        return tiles;
+    }
 }
