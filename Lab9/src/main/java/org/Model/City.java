@@ -7,7 +7,7 @@ import jakarta.persistence.*;
 @Table(name = "cities")
 @NamedQueries({
         @NamedQuery(name = "City.findByName",
-                query = "select e from City e where e.name LIKE :cityname ")
+                query = "select e from City e where e.name LIKE :cityName ")
 })
 
 public class City {
@@ -16,9 +16,9 @@ public class City {
     @Column(name = "id", nullable = false)
     private Integer id;
 
-    //@JoinColumn(name = "country", referencedColumnName = "name")
-    //@ManyToOne
-    private String country;
+    @JoinColumn(name = "country", referencedColumnName = "name")
+    @ManyToOne
+    private Country country;
 
     @Column(name = "name", length = 100, nullable = false)
     private String name;
@@ -32,6 +32,9 @@ public class City {
     @Column(name = "longitude")
     private Double longitude;
 
+    @Column(name="population")
+    private Integer population;
+
     public Integer getId() {
         return id;
     }
@@ -40,12 +43,12 @@ public class City {
         this.id = id;
     }
 
-    public String getCountry() {
+    public Country getCountry() {
         return country;
     }
 
-    public void setCountry(String country) {
-        this.country=country;
+    public void setCountry(Country country) {
+        this.country = country;
     }
 
     public String getName() {
@@ -80,4 +83,11 @@ public class City {
         this.longitude = longitude;
     }
 
+    public Integer getPopulation() {
+        return population;
+    }
+
+    public void setPopulation(Integer population) {
+        this.population = population;
+    }
 }

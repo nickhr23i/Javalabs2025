@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<solver>
+    <solutionClass>org.ConstraintSolver.CitySolution</solutionClass>
+    <entityClass>org.ConstraintSolver.CitySelection</entityClass>
+
+    <scoreDirectorFactory>
+        <constraintProviderClass>org.ConstraintSolver.CityConstraintProvider</constraintProviderClass>
+    </scoreDirectorFactory>
+
+    <termination>
+        <secondsSpentLimit>5</secondsSpentLimit>
+    </termination>
+</solver>

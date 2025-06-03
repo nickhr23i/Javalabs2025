@@ -15,7 +15,7 @@ public class EntityManagerFactorySingleton {
         return emf;
     }
 
-    public static EntityManagerFactory createEntityManagerFactory() {
+    private static EntityManagerFactory createEntityManagerFactory() {
         try {
             return Persistence.createEntityManagerFactory("citydb");
         } catch (Exception e) {

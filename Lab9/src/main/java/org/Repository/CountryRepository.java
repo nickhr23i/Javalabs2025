@@ -1,45 +1,42 @@
 package org.Repository;
 
-import jakarta.persistence.EntityManager;
 import jakarta.persistence.NoResultException;
 import org.Model.City;
+import org.Model.Country;
 import org.example.EntityManagerFactorySingleton;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 
-public class CityRepository extends AbstractRepository<City, Integer> implements AbstractCity{
-
+public class CountryRepository extends AbstractRepository<Country, Integer> implements AbstractCountry{
     @Override
-    public City findById(Integer id) {
+    public Country findById(Integer id) {
         em = EntityManagerFactorySingleton.getEntityManagerFactory().createEntityManager();
-        City city = em.find(City.class, id);
+        Country country = em.find(Country.class, id);
         em.close();
-        return city;
+        return country;
     }
 
     @Override
-    public List<City> findByName(String name) {
+    public List<Country> findByName(String name) {
         em = EntityManagerFactorySingleton.getEntityManagerFactory().createEntityManager();
-        List<City> cities = new ArrayList<>();
+        List<Country> countries = new ArrayList<>();
         long startTime = System.currentTimeMillis();
         try {
-            cities = em.createNamedQuery("City.findByName")
-                    .setParameter("cityName", name)
+            countries = em.createNamedQuery("Country.findByName")
+                    .setParameter("countryName", name)
                     .getResultList();
-            if (cities.isEmpty()) {
-                logger.warning("No city found with name: " + name);
+            if (countries.isEmpty()) {
+                logger.warning("No country found with name: " + name);
             }
         } catch (Exception e) {
-            logger.log(Level.SEVERE, "Error executing query: City.findByName", e);
+            logger.log(Level.SEVERE, "Error executing query: Country.findByName", e);
         } finally {
             long elapsed = System.currentTimeMillis() - startTime;
             logger.info("JPQL Execution time: " + elapsed + " ms");
         }
         em.close();
-        return cities;
+        return countries;
     }
-
-
 }

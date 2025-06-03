@@ -1,0 +1,118 @@
+mai 13, 2025 2:25:12 P.M. org.Repository.ContinentRepository findByName
+WARNING: No continent found with name: Australia
+mai 13, 2025 2:25:12 P.M. org.Repository.ContinentRepository findByName
+INFO: JPQL Execution time: 75 ms
+mai 13, 2025 4:08:34 P.M. org.Repository.ContinentRepository findByName
+WARNING: No continent found with name: Australia
+mai 13, 2025 4:08:34 P.M. org.Repository.ContinentRepository findByName
+INFO: JPQL Execution time: 73 ms
+mai 13, 2025 4:08:49 P.M. org.Repository.ContinentRepository findByName
+INFO: JPQL Execution time: 70 ms
+mai 13, 2025 4:19:38 P.M. org.Repository.ContinentRepository findByName
+INFO: JPQL Execution time: 70 ms
+mai 13, 2025 4:30:50 P.M. org.Repository.ContinentRepository findByName
+INFO: JPQL Execution time: 76 ms
+mai 13, 2025 4:31:15 P.M. org.Repository.ContinentRepository findByName
+INFO: JPQL Execution time: 72 ms
+mai 13, 2025 4:31:56 P.M. org.Repository.ContinentRepository findByName
+INFO: JPQL Execution time: 71 ms
+mai 13, 2025 6:29:43 P.M. org.Repository.ContinentRepository findByName
+INFO: JPQL Execution time: 128 ms
+mai 13, 2025 6:30:41 P.M. org.Repository.ContinentRepository findByName
+INFO: JPQL Execution time: 119 ms
+mai 13, 2025 6:32:27 P.M. org.Repository.ContinentRepository findByName
+INFO: JPQL Execution time: 120 ms
+mai 13, 2025 6:33:56 P.M. org.Repository.ContinentRepository findByName
+INFO: JPQL Execution time: 118 ms
+mai 13, 2025 6:35:39 P.M. org.Repository.ContinentRepository findByName
+INFO: JPQL Execution time: 117 ms
+mai 13, 2025 6:51:24 P.M. org.Repository.ContinentRepository findByName
+INFO: JPQL Execution time: 132 ms
+mai 13, 2025 6:52:06 P.M. org.Repository.ContinentRepository findByName
+INFO: JPQL Execution time: 129 ms
+mai 13, 2025 6:53:32 P.M. org.Repository.ContinentRepository findByName
+INFO: JPQL Execution time: 124 ms
+mai 13, 2025 6:59:53 P.M. org.Repository.ContinentRepository findByName
+INFO: JPQL Execution time: 123 ms
+mai 13, 2025 7:01:12 P.M. org.Repository.ContinentRepository findByName
+INFO: JPQL Execution time: 125 ms
+mai 24, 2025 9:56:03 A.M. org.Repository.ContinentRepository findByName
+INFO: JPQL Execution time: 101 ms
+mai 24, 2025 10:13:00 A.M. org.Repository.ContinentRepository findByName
+INFO: JPQL Execution time: 127 ms
+mai 24, 2025 10:17:05 A.M. org.Repository.ContinentRepository findByName
+INFO: JPQL Execution time: 123 ms
+mai 24, 2025 10:18:52 A.M. org.Repository.ContinentRepository findByName
+INFO: JPQL Execution time: 123 ms
+mai 24, 2025 10:21:46 A.M. org.Repository.ContinentRepository findByName
+INFO: JPQL Execution time: 113 ms
+mai 24, 2025 10:24:13 A.M. org.Repository.ContinentRepository findByName
+INFO: JPQL Execution time: 127 ms
+mai 24, 2025 10:24:48 A.M. org.Repository.ContinentRepository findByName
+INFO: JPQL Execution time: 123 ms
+mai 24, 2025 10:25:11 A.M. org.Repository.ContinentRepository findByName
+INFO: JPQL Execution time: 120 ms
+mai 24, 2025 10:25:33 A.M. org.Repository.ContinentRepository findByName
+INFO: JPQL Execution time: 121 ms
+mai 24, 2025 10:26:54 A.M. org.Repository.ContinentRepository findByName
+INFO: JPQL Execution time: 133 ms
+mai 24, 2025 10:27:37 A.M. org.Repository.ContinentRepository findByName
+INFO: JPQL Execution time: 120 ms
+mai 24, 2025 10:33:10 A.M. org.Repository.ContinentRepository findByName
+INFO: JPQL Execution time: 117 ms
+mai 24, 2025 10:39:54 A.M. org.Repository.ContinentRepository findByName
+INFO: JPQL Execution time: 120 ms
+mai 24, 2025 10:40:38 A.M. org.Repository.ContinentRepository findByName
+INFO: JPQL Execution time: 114 ms
+mai 24, 2025 10:45:10 A.M. org.Repository.ContinentRepository findByName
+INFO: JPQL Execution time: 107 ms
+mai 24, 2025 10:46:32 A.M. org.Repository.ContinentRepository findByName
+INFO: JPQL Execution time: 119 ms
+mai 24, 2025 11:24:48 A.M. org.Repository.ContinentRepository findByName
+INFO: JPQL Execution time: 121 ms
+mai 24, 2025 11:25:37 A.M. org.Repository.ContinentRepository findByName
+INFO: JPQL Execution time: 121 ms
+mai 24, 2025 11:26:08 A.M. org.Repository.ContinentRepository findByName
+INFO: JPQL Execution time: 118 ms
+mai 24, 2025 11:26:40 A.M. org.Repository.ContinentRepository findByName
+INFO: JPQL Execution time: 119 ms
+mai 24, 2025 11:27:21 A.M. org.Repository.ContinentRepository findByName
+INFO: JPQL Execution time: 126 ms
+mai 24, 2025 11:28:36 A.M. org.Repository.ContinentRepository findByName
+INFO: JPQL Execution time: 119 ms
+mai 24, 2025 11:29:08 A.M. org.Repository.ContinentRepository findByName
+INFO: JPQL Execution time: 115 ms
+mai 24, 2025 11:29:39 A.M. org.Repository.ContinentRepository findByName
+INFO: JPQL Execution time: 121 ms
+mai 24, 2025 11:34:14 A.M. org.Repository.ContinentRepository findByName
+INFO: JPQL Execution time: 119 ms
+mai 24, 2025 11:34:46 A.M. org.Repository.ContinentRepository findByName
+INFO: JPQL Execution time: 136 ms
+mai 24, 2025 11:35:17 A.M. org.Repository.ContinentRepository findByName
+INFO: JPQL Execution time: 115 ms
+mai 24, 2025 11:36:29 A.M. org.Repository.ContinentRepository findByName
+INFO: JPQL Execution time: 115 ms
+mai 24, 2025 11:39:04 A.M. org.Repository.ContinentRepository findByName
+INFO: JPQL Execution time: 114 ms
+mai 24, 2025 11:39:35 A.M. org.Repository.ContinentRepository findByName
+INFO: JPQL Execution time: 119 ms
+mai 24, 2025 11:40:29 A.M. org.Repository.ContinentRepository findByName
+INFO: JPQL Execution time: 121 ms
+mai 24, 2025 11:40:54 A.M. org.Repository.ContinentRepository findByName
+INFO: JPQL Execution time: 115 ms
+mai 24, 2025 11:42:35 A.M. org.Repository.ContinentRepository findByName
+INFO: JPQL Execution time: 117 ms
+mai 24, 2025 11:50:09 A.M. org.Repository.ContinentRepository findByName
+INFO: JPQL Execution time: 120 ms
+mai 24, 2025 12:19:27 P.M. org.Repository.ContinentRepository findByName
+INFO: JPQL Execution time: 139 ms
+mai 24, 2025 12:19:49 P.M. org.Repository.ContinentRepository findByName
+INFO: JPQL Execution time: 119 ms
+mai 24, 2025 12:20:07 P.M. org.Repository.ContinentRepository findByName
+INFO: JPQL Execution time: 131 ms
+mai 24, 2025 12:20:23 P.M. org.Repository.ContinentRepository findByName
+INFO: JPQL Execution time: 125 ms
+mai 24, 2025 12:21:16 P.M. org.Repository.ContinentRepository findByName
+INFO: JPQL Execution time: 120 ms
+mai 24, 2025 12:21:43 P.M. org.Repository.ContinentRepository findByName
+INFO: JPQL Execution time: 126 ms

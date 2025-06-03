@@ -6,6 +6,10 @@ import java.util.*;
 
 @Entity
 @Table(name = "countries")
+@NamedQueries({
+        @NamedQuery(name = "Country.findByName",
+                query = "select e from Country e where e.name LIKE :countryName ")
+})
 public class Country {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "id")
@@ -18,12 +22,12 @@ public class Country {
     @Column(name = "code", length = 3)
     private String code;
 
-    //@JoinColumn(name="continent",referencedColumnName = "id")
-    //@ManyToOne
-    private int continent;
+    @JoinColumn(name="continent",referencedColumnName = "id")
+    @ManyToOne
+    private Continent continent;
 
-    //@OneToMany(cascade = CascadeType.ALL, mappedBy="country")
-    //private List<City> cities=new ArrayList<>();
+    @OneToMany(cascade = CascadeType.ALL, mappedBy="country")
+    private List<City> cities=new ArrayList<>();
 
     public Integer getId() {
         return id;
@@ -49,12 +53,19 @@ public class Country {
         this.code = code;
     }
 
-    public Integer getContinent() {
+    public Continent getContinent() {
         return continent;
     }
 
-    public void setContinent(Integer continent) {
+    public void setContinent(Continent continent) {
         this.continent = continent;
     }
 
+    public List<City> getCities() {
+        return cities;
+    }
+
+    public void setCities(List<City> cities) {
+        this.cities = cities;
+    }
 }
